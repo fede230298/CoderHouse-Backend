@@ -1,0 +1,21 @@
+<h2>Lista de Producto</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Foto</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each productos}}
+            <tr>
+                <td><p>{{id}}</p></td>
+                <td><p>{{title}}</p></td>
+                <td><p>{{price}}</p></td>
+                <td><a href="/productos/detalle/{{id}}"><img width="100px" src="{{thumbnail}}"></a></td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>   

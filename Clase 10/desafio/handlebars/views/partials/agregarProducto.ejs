@@ -1,0 +1,18 @@
+<%- include('./partials/nav.ejs') %> 
+<h2>Agregar Productos</h2>
+
+<form action="/productos" method="post">
+    <div>
+        <label for="">Nombre</label>
+        <input type="text" name="title" id="">
+    </div>
+    <div>
+        <label for="">Precio</label>
+        <input type="text" name="price" id="">
+    </div>
+    <div>
+        <label for="">Foto</label>
+        <input type="text" name="thumbnail" id="">
+    </div>
+    <input type="submit" value="Agregar Producto">
+</form>

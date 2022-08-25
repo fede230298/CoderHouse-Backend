@@ -1,0 +1,21 @@
+html 
+    head 
+        title
+    body
+        a(href="/productos/agregarProducto") Agregar Producto
+        h1 Lista de Producto 
+        table 
+            thead  
+                tr 
+                    th Id 
+                    th Nombre 
+                    th Precio 
+                    th Foto 
+            tbody
+                each val in productos
+                    tr
+                        td #{val.id} 
+                        td #{val.title}
+                        td #{val.price} 
+                        td
+                            img(src=val.thumbnail) 

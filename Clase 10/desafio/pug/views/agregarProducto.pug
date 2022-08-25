@@ -1,0 +1,17 @@
+html
+    head 
+        title 
+    body 
+        a(href="/productos/mostrarProductos") Mostrar Productos
+        h2 Agregar Producto 
+        form(action="/productos" method="post")
+            div
+                label(for="") Nombre
+                input(type="text" name="title")
+            div 
+                label(for="") Precio 
+                input(type="text" name="price")
+            div 
+                label(for="") Foto 
+                input(type="text" name="thumbnail")
+            input(type="submit" value="Agregar Producto")   
