@@ -1,0 +1,30 @@
+<h2 class='mb-4'>Lista de Producto</h2> 
+
+<% if (products.length) { %> 
+  <table class='table table-light table-striped'>
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Foto</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% products.forEach(p => { %>
+              <tr>
+                  <td><p><%= p.id %> </p></td>
+                  <td><p><%= p.title  %></p></td>
+                  <td><p><%=p.price  %></p></td>
+                  <td><a href="/productos/detalle/<%= p.id %> "><img class="w-50" src="<%= p.thumbnail %> "></a></td>
+              </tr>
+          <% }) %>
+
+      </tbody>
+  </table>
+<% } else { %>
+  <div class='message'>
+    <h2>No se encuentra ningun producto</h2>
+    <p>Agregue un producto</p>
+  </div>
+<% } %>
