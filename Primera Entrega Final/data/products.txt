@@ -1,0 +1,1 @@
+[{"name":"PS3","price":"15000","id":"8ac93a9b-45b5-4c78-b106-b90b4d888eaa"},{"name":"PC","price":"200000","id":"357ea3aa-1c91-44eb-9002-c91d84e05926"},{"name":"SWITCH","price":"100000"}]

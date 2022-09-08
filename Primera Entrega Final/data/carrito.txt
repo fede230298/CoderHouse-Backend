@@ -1,0 +1,1 @@
+[{"id":"375ebf6b-f30f-4692-be66-545b6ec059d6","timestamp":1662668814390,"productos":[{"timestamp":1662668823112,"name":"ps5","value":"50000","id":"2"},{"timestamp":1662668828839,"name":"ps1","value":"50000"},{"timestamp":1662668918253,"name":"ps1","value":"50000"}]},{"id":"9db9aed1-173a-4d06-9e97-8d86f8b1783b","timestamp":1662669896922,"productos":[]}]
