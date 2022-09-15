@@ -5,13 +5,11 @@ const cController = require("../controllers/carritoController");
 const cContainer = new cController("./data/carrito.txt");
 
 router.get("/:id", (req,res,next)=>{
-    let productos;
     cContainer.getCartProducts(req.params.id)
     .then(data=>{
-        console.log("entre al finally")
-        productos = data
+        console.log(data)
+        res.send({data})
     })
-    res.send({status: productos})
 })
 
 router.post("/", (req,res,next)=>{

@@ -17,13 +17,14 @@ class carritoController{
 
     async getCartProducts(searchId){
         try{
-            this.getAll()
+            let pFinal = await this.getAll()
             .then(data=>{
                 let dataJSON = JSON.parse(data);
                 let index = dataJSON.findIndex(o => o.id == searchId)
                 console.log(dataJSON[index].productos)
                 return dataJSON[index].productos
             })
+            return pFinal
         } catch (error){
             console.log("Could not update")
         }
