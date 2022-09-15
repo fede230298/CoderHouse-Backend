@@ -21,11 +21,8 @@ class carritoController{
             .then(data=>{
                 let dataJSON = JSON.parse(data);
                 let index = dataJSON.findIndex(o => o.id == searchId)
-                let productList = []
-                dataJSON[index].productos.forEach(product => {
-                    productList.push({product})
-                });
-                return console.log(productList)
+                console.log(dataJSON[index].productos)
+                return dataJSON[index].productos
             })
         } catch (error){
             console.log("Could not update")
@@ -39,10 +36,11 @@ class carritoController{
             .then(data =>{
                 let datosJSON = JSON.parse(data);
                 carrito.id = uuidv4();
-                carrito.timestamp = Date.now();
+                let date = new Date();
+                carrito.timestamp = date.toUTCString();
                 datosJSON = [...datosJSON, {...carrito, "productos" : {}}]
                 let newDatos = JSON.stringify(datosJSON)
-                fs.writeFile(`${this.ruta}`, newDatos, "utf-8")    
+                fs.writeFile(`${this.ruta}`, newDatos, "utf-8")
             })
         }
         catch (error) {
@@ -57,10 +55,11 @@ class carritoController{
                 let dataJSON = JSON.parse(data);
                 let index = dataJSON.findIndex(o => o.id == searchId)
                 let product = {...newProducto}
+                let date = new Date();
                 if(dataJSON[index].productos.length > 0){
-                    dataJSON[index]= {"id" : dataJSON[index].id, "timestamp" : dataJSON[index].timestamp, "productos" : [...dataJSON[index].productos, {"timestamp": Date.now(), ...product}]}
+                    dataJSON[index]= {"id" : dataJSON[index].id, "timestamp" : dataJSON[index].timestamp, "productos" : [...dataJSON[index].productos, {"timestamp": date.toUTCString(), ...product}]}
                 } else {
-                    dataJSON[index]= {"id" : dataJSON[index].id, "timestamp" : dataJSON[index].timestamp, "productos" : [{"timestamp": Date.now(), ...product}]}
+                    dataJSON[index]= {"id" : dataJSON[index].id, "timestamp" : dataJSON[index].timestamp, "productos" : [{"timestamp": date.toUTCString(), ...product}]}
                 }
                 let newDatos = JSON.stringify(dataJSON)
                 fs.writeFile(`${this.ruta}`, newDatos, "utf-8")

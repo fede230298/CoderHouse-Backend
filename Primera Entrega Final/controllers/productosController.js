@@ -21,7 +21,8 @@ class productoController{
             .then(data =>{
                 let datosJSON = JSON.parse(data);
                 producto.id = uuidv4();
-                producto.timestamp = Date.now()
+                let date = new Date();
+                producto.timestamp = date.toUTCString();
                 datosJSON.push(producto);
                 let newDatos = JSON.stringify(datosJSON)
                 fs.writeFile(`${this.ruta}`, newDatos, "utf-8")    
@@ -38,7 +39,7 @@ class productoController{
             .then(data=>{
                 let dataJSON = JSON.parse(data);
                 let index = dataJSON.findIndex(o => o.id == searchId)
-                dataJSON[index]= {...producto, "id" : searchId, "timestamp" : Date.Now()}
+                dataJSON[index]= {...producto, "id" : searchId, "timestamp" : date.toUTCString()}
                 let newDatos = JSON.stringify(dataJSON)
                 fs.writeFile(`${this.ruta}`, newDatos, "utf-8")
             })
@@ -54,7 +55,6 @@ class productoController{
             .then(data=>{
                 let dataJSON = JSON.parse(data);
                 let deletedArray = dataJSON.filter(o => o.id != id)
-                /* dataJSON[index]= {...producto, "id" : searchId} */
                 let newDatos = JSON.stringify(deletedArray)
                 fs.writeFile(`${this.ruta}`, newDatos, "utf-8")
             })

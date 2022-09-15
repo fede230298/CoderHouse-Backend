@@ -5,11 +5,13 @@ const cController = require("../controllers/carritoController");
 const cContainer = new cController("./data/carrito.txt");
 
 router.get("/:id", (req,res,next)=>{
+    let productos;
     cContainer.getCartProducts(req.params.id)
-    .then(data => {
-        console.log(data)
+    .then(data=>{
+        console.log("entre al finally")
+        productos = data
     })
-    res.send({"Status" : "Check console"})
+    res.send({status: productos})
 })
 
 router.post("/", (req,res,next)=>{
@@ -32,4 +34,4 @@ router.delete("/:id/productos/:id_prod", (req,res,next)=>{
     res.send({"status" : "finished"})
 })
 
-module.exports = router 
+module.exports = router
