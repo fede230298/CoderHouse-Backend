@@ -38,12 +38,13 @@ class productoController{
             this.getAll()
             .then(data=>{
                 let dataJSON = JSON.parse(data);
+                let date = new Date();
                 let index = dataJSON.findIndex(o => o.id == searchId)
                 dataJSON[index]= {...producto, "id" : searchId, "timestamp" : date.toUTCString()}
                 let newDatos = JSON.stringify(dataJSON)
                 fs.writeFile(`${this.ruta}`, newDatos, "utf-8")
             })
-            .catch((error)=>{res.send({error: error})})
+            .catch((error)=>{console.log(error)})
         } catch (error){
             console.log("Could not update")
         }

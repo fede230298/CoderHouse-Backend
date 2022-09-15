@@ -17,8 +17,8 @@ router.post("/", ({body},res,next)=>{
 
 router.put("/:id", (req,res,next)=>{
     pContainer.updateProduct(req.params.id,req.body)
-    .then(res.send({status: "finished"}))
-    .catch((err)=>{res.send("fuck")})
+    .then(res.send(console.log("Updated")))
+    .catch((err)=>console.log(err))
 })
 
 router.delete("/:id", (req,res,next)=>{
