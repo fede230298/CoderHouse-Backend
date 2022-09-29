@@ -1,0 +1,66 @@
+mongod --dbpath "rutaDeseada\ecommerce"
+
+use ecommerce
+
+
+1/2)
+db.mensajes.insertMany([
+  {email: "fede@gmail.com", message: "Hola soy Fede", timestamp: ISODate()},
+  {email: "martin@gmail.com", message: "hola soy Martin", timestamp: ISODate()},
+  {email: "paula@gmail.com", message: "hola soy Paula", timestamp: ISODate()},
+  {email: "fede@gmail.com", message: "necesito ayuda", timestamp: ISODate()},
+  {email: "martin@gmail.com", message: "Cual es el precio del producto?", timestamp: ISODate()},
+  {email: "fede@gmail.com", message: "tienen en stock?", timestamp: ISODate()},
+  {email: "paula@gmail.com", message: "aguarde un momento", timestamp: ISODate()},
+  {email: "martin@gmail.com", message: "ok", timestamp: ISODate()},
+  {email: "fede@gmail.com", message: "hay descuento con tarjetas?", timestamp: ISODate()},
+  {email: "fede@gmail.com", message: "espero", timestamp: ISODate()}
+])
+
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6324c7d4a864bd0a2548343d"),
+    '1': ObjectId("6324c7d4a864bd0a2548343e"),
+    '2': ObjectId("6324c7d4a864bd0a2548343f"),
+    '3': ObjectId("6324c7d4a864bd0a25483440"),
+    '4': ObjectId("6324c7d4a864bd0a25483441"),
+    '5': ObjectId("6324c7d4a864bd0a25483442"),
+    '6': ObjectId("6324c7d4a864bd0a25483443"),
+    '7': ObjectId("6324c7d4a864bd0a25483444"),
+    '8': ObjectId("6324c7d4a864bd0a25483445"),
+    '9': ObjectId("6324c7d4a864bd0a25483446")
+  }
+}
+
+3)
+db.mensajes.find()
+db.productos.find()
+
+4)
+db.mensajes.estimatedDocumentCount()
+db.productos.estimatedDocumentCount()
+
+5)
+a) db.productos.insert({title: "PC Gamer", price: 3200, thumbnail: "https://picsum.photos/200/300"})
+
+b)
+i)db.productos.find({price: {$lt: 1000}})
+ii)db.productos.find({price: {$in: [1000, 3000]}})
+iii)db.productos.find({price: {$gt: 3000}})
+iv)db.productos.find({}, {"title": 1}).sort({price: 1}).skip(2).limit(1)
+
+c)
+db.productos.update({},{$set:{stock:100}},{upsert:false,multi:true})
+
+d)
+db.productos.update({price: {$gt: 4000}},{$set:{stock:0}},{upsert:false,multi:true})
+
+e)
+db.productos.deleteMany({price: {$lt: 1000}})
+
+6)
+db.createUser({user: "pepe", pwd: "asd456", roles: [{role: "read", db: "ecommerce"}]})
+mongo -u pepe -p asd456
+use ecommerce
+db.productos.find()

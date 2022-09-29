@@ -1,0 +1,360 @@
+CREAR LA BASE DE DATOS EN LA CARPETA "ecommerce"
+
+Reemplazar rutaDeseada por la direccion establecida en su PC
+mongod --dbpath "rutaDeseada\ecommerce"
+
+
+ABRIR LA SEGUNDA TERMINAL EN MONGO SHELL
+
+Seleccionar la base a utilizar
+use ecommerce
+
+Insertar 10 registros en mensajes y productos
+
+db.mensajes.insertMany([
+  {email: "fede@gmail.com", message: "Hola soy Fede", timestamp: ISODate()},
+  {email: "martin@gmail.com", message: "hola soy Martin", timestamp: ISODate()},
+  {email: "paula@gmail.com", message: "hola soy Paula", timestamp: ISODate()},
+  {email: "fede@gmail.com", message: "necesito ayuda", timestamp: ISODate()},
+  {email: "martin@gmail.com", message: "Cual es el precio del producto?", timestamp: ISODate()},
+  {email: "fede@gmail.com", message: "tienen en stock?", timestamp: ISODate()},
+  {email: "paula@gmail.com", message: "aguarde un momento", timestamp: ISODate()},
+  {email: "martin@gmail.com", message: "ok", timestamp: ISODate()},
+  {email: "fede@gmail.com", message: "hay descuento con tarjetas?", timestamp: ISODate()},
+  {email: "fede@gmail.com", message: "espero", timestamp: ISODate()}
+])
+
+DB Response
+
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6324c7d4a864bd0a2548343d"),
+    '1': ObjectId("6324c7d4a864bd0a2548343e"),
+    '2': ObjectId("6324c7d4a864bd0a2548343f"),
+    '3': ObjectId("6324c7d4a864bd0a25483440"),
+    '4': ObjectId("6324c7d4a864bd0a25483441"),
+    '5': ObjectId("6324c7d4a864bd0a25483442"),
+    '6': ObjectId("6324c7d4a864bd0a25483443"),
+    '7': ObjectId("6324c7d4a864bd0a25483444"),
+    '8': ObjectId("6324c7d4a864bd0a25483445"),
+    '9': ObjectId("6324c7d4a864bd0a25483446")
+  }
+}
+
+
+db.productos.insertMany([
+  {title: "Celular", price: 800, thumbnail: "https://picsum.photos/seed/picsum/200/300"},
+  {title: "Teclado", price: 100, thumbnail: "https://picsum.photos/seed/picsum/200/300"},
+  {title: "Silla", price: 150, thumbnail: "https://picsum.photos/seed/picsum/200/300"},
+  {title: "Peluche", price: 64, thumbnail: "https://picsum.photos/seed/picsum/200/300"},
+  {title: "Computadora Portatil", price: 2500, thumbnail: "https://picsum.photos/seed/picsum/200/300"},
+  {title: "TV", price: 700, thumbnail: "https://picsum.photos/seed/picsum/200/300"},
+  {title: "Proyector", price: 900, thumbnail: "https://picsum.photos/seed/picsum/200/300"},
+  {title: "Horno", price: 150, thumbnail: "https://picsum.photos/seed/picsum/200/300"},
+  {title: "Pantalon", price: 120, thumbnail: "https://picsum.photos/seed/picsum/200/300"},
+  {title: "Escritorio", price: 200, thumbnail: "https://picsum.photos/seed/picsum/200/300"},
+])
+
+DB Response
+
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6324c858a864bd0a25483447"),
+    '1': ObjectId("6324c858a864bd0a25483448"),
+    '2': ObjectId("6324c858a864bd0a25483449"),
+    '3': ObjectId("6324c858a864bd0a2548344a"),
+    '4': ObjectId("6324c858a864bd0a2548344b"),
+    '5': ObjectId("6324c858a864bd0a2548344c"),
+    '6': ObjectId("6324c858a864bd0a2548344d"),
+    '7': ObjectId("6324c858a864bd0a2548344e"),
+    '8': ObjectId("6324c858a864bd0a2548344f"),
+    '9': ObjectId("6324c858a864bd0a25483450")
+  }
+}
+
+Mostrar los elementos de cada coleccion
+
+db.mensajes.find()
+
+Db Response
+
+[
+  {
+    _id: ObjectId("632337df93ebaf36e38e3e2e"),
+    email: 'fede@gmail.com',
+    message: 'Hola',
+    timestamp: ISODate("2022-09-15T14:34:07.430Z")
+  },
+  {
+    _id: ObjectId("632337df93ebaf36e38e3e2f"),
+    email: 'Martin@gmail.com',
+    message: 'Buenas',
+    timestamp: ISODate("2022-09-15T14:34:07.430Z")
+  },
+  {
+    _id: ObjectId("6324c7d4a864bd0a2548343d"),
+    email: 'fede@gmail.com',
+    message: 'Hola soy Fede',
+    timestamp: ISODate("2022-09-16T19:00:36.349Z")
+  },
+  {
+    _id: ObjectId("6324c7d4a864bd0a2548343e"),
+    email: 'martin@gmail.com',
+    message: 'hola soy Martin',
+    timestamp: ISODate("2022-09-16T19:00:36.349Z")
+  },
+  {
+    _id: ObjectId("6324c7d4a864bd0a2548343f"),
+    email: 'paula@gmail.com',
+    message: 'hola soy Paula',
+    timestamp: ISODate("2022-09-16T19:00:36.349Z")
+  },
+  {
+    _id: ObjectId("6324c7d4a864bd0a25483440"),
+    email: 'fede@gmail.com',
+    message: 'necesito ayuda',
+    timestamp: ISODate("2022-09-16T19:00:36.349Z")
+  },
+  {
+    _id: ObjectId("6324c7d4a864bd0a25483441"),
+    email: 'martin@gmail.com',
+    message: 'Cual es el precio del producto?',
+    timestamp: ISODate("2022-09-16T19:00:36.349Z")
+  },
+  {
+    _id: ObjectId("6324c7d4a864bd0a25483442"),
+    email: 'fede@gmail.com',
+    message: 'tienen en stock?',
+    timestamp: ISODate("2022-09-16T19:00:36.349Z")
+  },
+  {
+    _id: ObjectId("6324c7d4a864bd0a25483443"),
+    email: 'paula@gmail.com',
+    message: 'aguarde un momento',
+    timestamp: ISODate("2022-09-16T19:00:36.349Z")
+  },
+  {
+    _id: ObjectId("6324c7d4a864bd0a25483444"),
+    email: 'martin@gmail.com',
+    message: 'ok',
+    timestamp: ISODate("2022-09-16T19:00:36.349Z")
+  },
+  {
+    _id: ObjectId("6324c7d4a864bd0a25483445"),
+    email: 'fede@gmail.com',
+    message: 'hay descuento con tarjetas?',
+    timestamp: ISODate("2022-09-16T19:00:36.349Z")
+  },
+  {
+    _id: ObjectId("6324c7d4a864bd0a25483446"),
+    email: 'fede@gmail.com',
+    message: 'espero',
+    timestamp: ISODate("2022-09-16T19:00:36.349Z")
+  }
+]
+
+db.productos.find()
+
+DB Response
+
+[
+  {
+    _id: ObjectId("6324c858a864bd0a25483447"),
+    title: 'Celular',
+    price: 800,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a25483448"),
+    title: 'Teclado',
+    price: 100,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a25483449"),
+    title: 'Silla',
+    price: 150,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a2548344a"),
+    title: 'Peluche',
+    price: 64,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a2548344b"),
+    title: 'Computadora Portatil',
+    price: 2500,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a2548344c"),
+    title: 'TV',
+    price: 700,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a2548344d"),
+    title: 'Proyector',
+    price: 900,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a2548344e"),
+    title: 'Horno',
+    price: 150,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a2548344f"),
+    title: 'Pantalon',
+    price: 120,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a25483450"),
+    title: 'Escritorio',
+    price: 200,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  }
+]
+
+Mostrar la cantidad de documentos en cada uno
+db.mensajes.estimatedDocumentCount()
+
+DB Response
+12
+
+db.productos.estimatedDocumentCount()
+
+DB Response
+10
+
+Realizar un CRUD
+a) db.productos.insert({title: "PC Gamer", price: 3200, thumbnail: "https://picsum.photos/200/300"})
+
+DB Response
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("6324c9b5a864bd0a25483451") }
+}
+
+b)  i)db.productos.find({price: {$lt: 1000}})
+
+    DB Response
+    [
+  {
+    _id: ObjectId("6324c858a864bd0a25483447"),
+    title: 'Celular',
+    price: 800,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a25483448"),
+    title: 'Teclado',
+    price: 100,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a25483449"),
+    title: 'Silla',
+    price: 150,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a2548344a"),
+    title: 'Peluche',
+    price: 64,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a2548344c"),
+    title: 'TV',
+    price: 700,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a2548344d"),
+    title: 'Proyector',
+    price: 900,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a2548344e"),
+    title: 'Horno',
+    price: 150,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a2548344f"),
+    title: 'Pantalon',
+    price: 120,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  },
+  {
+    _id: ObjectId("6324c858a864bd0a25483450"),
+    title: 'Escritorio',
+    price: 200,
+    thumbnail: 'https://picsum.photos/seed/picsum/200/300'
+  }
+]
+
+    ii)db.productos.find({price: {$in: [1000, 3000]}})
+
+    DB Response
+
+
+    iii)db.productos.find({price: {$gt: 3000}})
+
+    DB Response
+[
+  {
+    _id: ObjectId("6324c9b5a864bd0a25483451"),
+    title: 'PC Gamer',
+    price: 3200,
+    thumbnail: 'https://picsum.photos/200/300'
+  }
+]
+    iv)db.productos.find({}, {"title": 1}).sort({price: 1}).skip(2).limit(1)
+
+    DB Response
+    [ { _id: ObjectId("6324c858a864bd0a2548344f"), title: 'Pantalon' } ]
+
+
+c) db.productos.update({},{$set:{stock:100}},{upsert:false,multi:true})
+
+DB Response
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 11,
+  modifiedCount: 11,
+  upsertedCount: 0
+}
+
+d) stock 0 a todos los mayores de 4000
+
+db.productos.update({price: {$gt: 4000}},{$set:{stock:0}},{upsert:false,multi:true})
+
+DB Response
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+
+e) Borrar los items menores a 1000
+
+db.productos.deleteMany({price: {$lt: 1000}})
+
+DB Response
+{ acknowledged: true, deletedCount: 9 }
+
+6) Crear un usuario
+use admin
+db.createUser({user: "pepe", pwd: "asd456", roles: [{role: "read", db: "ecommerce"}]})
