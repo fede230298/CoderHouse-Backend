@@ -1,17 +1,13 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Primera entrega del proyecto final del curso de Backend con Nodejs en Coderhouse. GitHub: https://github.com/FelixGonzalo/eCommerce_backend",
-    "version": "0.1.0",
-    "title": "eCommerce Backend "
+    "description": "CoderHouse Backend",
+    "version": "2.0",
+    "title": "Backend "
   },
   "host": "localhost:8080",
   "basePath": "/api",
   "schemes": ["http"],
-  "externalDocs": {
-    "description": "Find out more about Swagger",
-    "url": "http://swagger.io"
-  },
   "tags": [
     {
       "name": "products",
